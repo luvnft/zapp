@@ -1,7 +1,7 @@
 <div *ngIf="(community === undefined) && (feedType !== feedTypeOptions[1] )" class="search_form_mobile">
   <form class="search"  onsubmit="return false;">
     <label for="search_input_mobile">
-        <input id="search_input_mobile" type="search"  class="hashtag-search-mobile" placeholder="#️ {{'Search hashtag'|translate}} ⏎" (keyup.enter)="searchFromMobile()">
+        <input id="search_input_mobile" type="search"  class="hashtag-search-mobile" placeholder="#️ {{'Search hahztag'|translate}} ⏎" (keyup.enter)="searchFromMobile()">
         <cds-icon shape="search"></cds-icon>
     </label>
   </form>
@@ -43,11 +43,11 @@
         </div>
         <div class="card-block">
           <div class="card-title">
-            <span>             
+            <span>
               <span class="break-words-overflow feed-header-text"> n/{{community.name}}</span>
             </span>
             <span>
-              <span translate> of </span> 
+              <span translate> of </span>
               <img imageLoader *ngIf="community?.creatorProfile?.image" (click)="openCommunityCreatorInSnort()" alt="{{'Profile picture'|translate}}"
                     src="{{ community.creatorProfile?.image }}" class="community-image pointer-cursor" title="{{'Open in Snort'|translate}}"
                     onerror="this.onerror=null; this.src='https\://robohash.org/user.png?size=100x100'" />
@@ -56,19 +56,19 @@
                     title="{{'Open in Snort'|translate}}" />
               <span class="break-words-overflow"> {{community.creatorProfile?.displayName ? community.creatorProfile?.displayName : (community.creatorProfile?.name ? community.creatorProfile?.name : community.creatorHexKey | abbreviateId)}}</span>
               <span>&nbsp;
-                <cds-icon class="alert-icon" shape="info-circle" (click)="showingCommunityInfo = true" title="{{'Show community details'|translate}}"></cds-icon>
+                <cds-icon class="alert-icon" shape="info-circle" (click)="showingCommunityInfo = true" title="{{'Show tribe details'|translate}}"></cds-icon>
                 <button *ngIf="weblnEnabled" class="btn btn-sm btn-icon btn-primary" (click)="zapMods()"><cds-icon shape="bolt" solid="true"></cds-icon>Zap Mods</button>
                 &nbsp; <button type="button" class="btn btn-icon btn-outline btn-sm" aria-label="refresh" (click)="loadFeedFromBeginning()">
                   <cds-icon shape="refresh"></cds-icon>
                 </button>
               </span>
-            </span>  
+            </span>
           </div>
           <div class="card-text">
             <div class="clr-toggle-wrapper">
               <input type="checkbox" id="toggle1" name="toggle-full" [(ngModel)]="showUnapprovedPosts" (ngModelChange)="loadFeedFromBeginning()" class="clr-toggle"  />
               <label for="toggle1" class="clr-control-label" translate>Show unmoderated feed</label>
-            </div> 
+            </div>
           </div>
         </div>
       </div>
@@ -77,8 +77,8 @@
 </ng-template>
 <ng-template [ngIf]="loadingCommunityDetails">
   <div align="center">
-    <span class="spinner spinner-md"></span> 
-    <p translate>Loading community details...</p>
+    <span class="spinner spinner-md"></span>
+    <p translate>Loading tribe details...</p>
   </div>
 </ng-template>
 
@@ -90,30 +90,30 @@
           <clr-select-container class="less-top-margin-feed-type">
             <select  id="select-full" title="{{'Feed type'|translate}}" clrSelect name="options" [(ngModel)]="feedType" (ngModelChange)="onChangeFeedType($event)" class="giant-text-in-select select-feed-type">
               <option [value]="feedTypeOptions[0]" class="option-feed-type">#️⃣ {{'Topics Feed'|translate}}</option>
-              <option [value]="feedTypeOptions[1]" class="option-feed-type">🫂 {{'Communities Feed'|translate}} - BETA</option>
+              <option [value]="feedTypeOptions[1]" class="option-feed-type">🫂 {{'Tribe Feed'|translate}} - BETA</option>
             </select>
           </clr-select-container>
         </div>
-        <div class="clr-col">    
+        <div class="clr-col">
           <button type="button" class="btn btn-icon btn-outline btn-sm" aria-label="refresh" (click)="loadFeedFromBeginning()">
             <cds-icon shape="refresh"></cds-icon>
           </button>
         </div>
-      </div>  
+      </div>
       <div class="clr-control-container ml-5">
         <div class="clr-toggle-wrapper" *ngIf="feedType === feedTypeOptions[1]">
           <input type="checkbox" id="toggle1" name="toggle-full" [(ngModel)]="showUnapprovedPosts" (ngModelChange)="loadFeedFromBeginning()" class="clr-toggle"  />
           <label for="toggle1" class="clr-control-label" translate>Show unmoderated feed</label>
-        </div>      
+        </div>
       </div>
     </div>
-  </div>    
+  </div>
 </ng-template>
 <app-note-composer *ngIf="ndkProvider.canWriteToNostr && !loadingCommunityDetails && (feedType === feedTypeOptions[1] ? community: true)" [currentTag]="tag" (postedEventEmitter)="addEventToFeed($event)" [currentCommunity]="community"></app-note-composer>
 
 <div *ngIf="(feedType === feedTypeOptions[0]) && !tag && !community && (!followedTopics || followedTopics?.length == 0) && (!events || events.size== 0)" class="clr-row clr-justify-content-center">
   <div class="clr-col-12 clr-col-md-8">
-      <div class="card">            
+      <div class="card">
           <div class="card-block">
               <div align="center" class="card-text" translate>
                 Uh oh! No topics followed yet. Take the discovery wizard for a test-drive?
@@ -128,17 +128,17 @@
 
 <div *ngIf="(feedType === feedTypeOptions[1]) && (!community) && ndkProvider.appData.followedCommunities.length === 0 && (!events || events.size === 0)" class="clr-row clr-justify-content-center">
   <div class="clr-col-12 clr-col-md-8">
-      <div class="card">            
+      <div class="card">
           <div class="card-block">
               <div align="center" class="card-text" translate>
-                Uh oh! You have not joined any communities yet.
+                Uh oh! You have not joined any tribes yet.
                 <div class="mt-20">
-                  <a class="btn btn-primary" routerLink="/communities/discover" translate>Discover Communities</a>
+                  <a class="btn btn-primary" routerLink="/communities/discover" translate>Discover Tribes</a>
                 </div>
               </div>
           </div>
       </div>
-  </div>    
+  </div>
 </div>
 <div align="center" *ngIf="(!loadingEvents) && (!loadingCommunityDetails) && ((feedType === feedTypeOptions[0] && (tag || ndkProvider.appData.followedTopics!=='')) || (feedType === feedTypeOptions[1] && (community || ndkProvider.appData.followedCommunities!==''))) && (!events || (events && events.size == 0))">
   <div align="center" class="alert alert-info clr-col-12 clr-col-md-8" role="alert">
@@ -182,10 +182,10 @@
   <span class="spinner spinner-md" translate>Loading notes...</span>
 </div>
 <clr-modal [(clrModalOpen)]="showingCommunityInfo" [clrModalSize]="'lg'">
-  <h3 class="modal-title" translate>Community Details</h3>
+  <h3 class="modal-title" translate>Tribe Deets</h3>
   <div class="modal-body">
       <b><span class="break-words-overflow">n/{{community?.name}}</span></b> by {{community?.creatorProfile?.displayName ? community?.creatorProfile?.displayName : (community?.creatorProfile?.name ? community?.creatorProfile?.name : community?.creatorHexKey | abbreviateId)}}
-      <h4 translate>Description</h4>      
+      <h4 translate>Description</h4>
       <p><ngx-dynamic-hooks [content]="community?.description | newLineToBr "></ngx-dynamic-hooks></p>
       <h4 translate>Moderators</h4>
       <div class="mt-20">

@@ -8,7 +8,7 @@
   <div *ngIf="community && !hideCommunityHeader" class="card-header note-community-header">
     <img imageLoader *ngIf="community?.image" (click)="openCommunityPage()" alt="{{'Community image'|translate}}"
         src="{{ community.image }}" class="community-image pointer-cursor" title="{{'Browse'|translate}}" />
-    <img imageLoader alt="{{'temp community avatar'|translate}}" (click)="openCommunityPage()" *ngIf="community?.image == undefined"
+    <img imageLoader alt="{{'temp tribe avatar'|translate}}" (click)="openCommunityPage()" *ngIf="community?.image == undefined"
         class="community-image pointer-cursor" src="https://robohash.org/{{ community.name }}.png?size=100x100"
         title="{{'Browse'|translate}}" />
     <span class="break-words-overflow"> n/{{community.name}} <span class="smaller-text">of </span>

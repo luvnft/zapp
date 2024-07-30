@@ -6,13 +6,13 @@
     <div class="branding">
       <a href="javascript://" class="nav-link">
         <img class="logo-header" src="/assets/icons/logo-without-text-zapddit.svg"/>
-        <span class="title main-title-font">zapddit</span>
+        <span class="title main-title-font">HAHZ</span>
       </a>
     </div>
 
     <form *ngIf="isLoggedIn() && !isMobileScreen" class="search" spellcheck="false"  onsubmit="return false;">
       <label for="search_input">
-          <input id="search_input" type="text"  placeholder="{{'# '+ ('Search hashtag'| translate) + ' ⏎'}}" (keyup.enter)="search()">
+          <input id="search_input" type="text"  placeholder="{{'# '+ ('Search hahztag'| translate) + ' ⏎'}}" (keyup.enter)="search()">
       </label>
     </form>
 
@@ -66,10 +66,10 @@
       <div class="nav-divider"></div>
       <label class="nav-header" *ngIf="!sidebarCollapsed">
         {{'Communities'|translate}} <span class="label label-info" translate>BETA</span></label>
-      <a title="{{'Recently active communities'|translate}}"  clrVerticalNavLink routerLink="/communities/recently-active" routerLinkActive="active">
+      <a title="{{'Recently Active Tribes'|translate}}"  clrVerticalNavLink routerLink="/communities/recently-active" routerLinkActive="active">
         <cds-icon shape="bubble-exclamation" clrVerticalNavIcon></cds-icon><span class="nav-text" translate>Recently active</span>
       </a>
-      <a title="{{'Search communities'|translate}}"  clrVerticalNavLink routerLink="/communities/discover" routerLinkActive="active">
+      <a title="{{'Search Tribes'|translate}}"  clrVerticalNavLink routerLink="/communities/discover" routerLinkActive="active">
         <cds-icon shape="search" clrVerticalNavIcon></cds-icon><span class="nav-text" translate>Search</span>
       </a>
       <a title="{{'Joined communities'|translate}}" clrVerticalNavLink routerLink="/communities/joined" routerLinkActive="active">

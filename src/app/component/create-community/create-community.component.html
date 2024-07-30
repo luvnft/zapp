@@ -1,16 +1,16 @@
 <ng-container >
   <clr-modal
-   [clrModalOpen]="show" 
-   (clrModalOpenChange)="onChange($event)" 
+   [clrModalOpen]="show"
+   (clrModalOpenChange)="onChange($event)"
    [clrModalStaticBackdrop]="false">
     <h3 class="modal-title center" translate>
-      Create/Edit Community
+      Create/Edit Tribe
     </h3>
     <div class="modal-body">
     <div class="clr-row">
     <form clrForm #newCommunityForm="ngForm"
      clrLayout="vertical"
-     novalidate 
+     novalidate
      onsubmit="return false;">
       <div class="clr-col-12 ptb-3">
         <clr-input-container>
@@ -71,7 +71,7 @@
           id="mod-npub" name="mod-npub"/>
           <clr-control-helper>
             {{'Paste the npub and press enter'|translate}} ⏎
-          </clr-control-helper>          
+          </clr-control-helper>
         </clr-input-container>
         <div class="clr-col-12 pl-5 clr-subtext pt-10" >
           <div *ngFor="let item of this.newCommunity?.moderatorHexKeys" class="pt-10 inline-display">
@@ -83,7 +83,7 @@
   </div>
   <div class="modal-footer">
    <button type="button" class="btn btn-icon btn-primary" aria-label="new community" (click)="onCreate()" [disabled]="createDisabled">
-    <cds-icon *ngIf="!editMode" shape="plus-circle"></cds-icon><cds-icon *ngIf="editMode" shape="floppy"></cds-icon> {{editMode?('Save'|translate):('Create Community'|translate)}}
+    <cds-icon *ngIf="!editMode" shape="plus-circle"></cds-icon><cds-icon *ngIf="editMode" shape="floppy"></cds-icon> {{editMode?('Save'|translate):('Create Tribe'|translate)}}
     </button>
   </div>
 </div>

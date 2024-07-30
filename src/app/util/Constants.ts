@@ -23,5 +23,5 @@ export class Constants {
   public static readonly DEFAULT_FEED_IS_COMMUNITY = 'defaultFeedIsCommunity';
   public static readonly INDEX_ROUTE:string='/'
   public static readonly FEED_ROUTE:string='/feed'
-  public static readonly ZAPDDIT_PUBKEY = '748bfa87c437b294164d1784b324a0d2e9495c8268e0044e3c7796a3b158c9d8';
+  public static readonly ZAPDDIT_PUBKEY = '83ec591d93ace7270302cd347e90c78da2a9746d026feb8edec477f082ce449e';
 }
