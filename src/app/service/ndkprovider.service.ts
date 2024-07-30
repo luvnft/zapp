@@ -62,7 +62,7 @@ export class NdkproviderService {
     mutedTopics: '',
     followedCommunities:''
   };
-  notice$ = new BehaviorSubject<string>('Initializing zapddit');
+  notice$ = new BehaviorSubject<string>('Initializing Hahz');
   isNip05Verified$ = new BehaviorSubject<boolean>(false);
   fetchingPeopleIFollowFromRelay$ = new BehaviorSubject<boolean>(true);
   fetchingMutedUsersFromRelay$ = new BehaviorSubject<MutedUserMetaData>({ status: true, count: 0 });
@@ -239,7 +239,7 @@ export class NdkproviderService {
     this.currentUserProfile = {
       displayName: 'Lurky Lurkerson',
     };
-    this.ndk = new NDK({      
+    this.ndk = new NDK({
       cacheAdapter: dexieAdapter,
       explicitRelayUrls: explicitRelayUrls,
       autoConnectUserRelays: true,
@@ -276,8 +276,8 @@ export class NdkproviderService {
       this.signer = new NDKNip07Signer();
     }
 
-    const params: NDKConstructorParams = { 
-      cacheAdapter: dexieAdapter, signer: this.signer, 
+    const params: NDKConstructorParams = {
+      cacheAdapter: dexieAdapter, signer: this.signer,
       explicitRelayUrls: explicitRelayUrls,
       autoConnectUserRelays: true,
       autoFetchUserMutelist: true,
@@ -370,8 +370,8 @@ export class NdkproviderService {
         if(localStorage.getItem(Constants.RELAYSUBS) !== undefined) {
           relayUrls = localStorage.getItem(Constants.RELAYSUBS)?.split(',');
         }
-        const params: NDKConstructorParams = { 
-          cacheAdapter: dexieAdapter, signer: this.signer, 
+        const params: NDKConstructorParams = {
+          cacheAdapter: dexieAdapter, signer: this.signer,
           explicitRelayUrls: relayUrls ? relayUrls : explicitRelayUrls,
           autoConnectUserRelays: true,
           autoFetchUserMutelist: true,
@@ -411,7 +411,7 @@ export class NdkproviderService {
     // const relays = this.currentUser?.relayUrls;
 
     if (relayUrls && relayUrls.length > 0) {
-      const newNDKParams = { 
+      const newNDKParams = {
         cacheAdapter: dexieAdapter, signer: this.signer,
          explicitRelayUrls: relayUrls,
          autoConnectUserRelays: true,
@@ -422,7 +422,7 @@ export class NdkproviderService {
       if (this.isNip07) {
         await newNDK.assertSigner();
       }
-      try {        
+      try {
         const oldNDK = this.ndk;
         oldNDK?.removeAllListeners();
         console.log("trying to connect with new NDK...")
@@ -435,7 +435,7 @@ export class NdkproviderService {
             this.ndk = newNDK;
             this.loggingIn = false;
             //once all setup is done, then only set loggedIn=true to start rendering
-            this.startRendering();            
+            this.startRendering();
           });
         })
         .catch(e => console.log("come on.. ndk not loaded"));
@@ -447,10 +447,10 @@ export class NdkproviderService {
         console.log('refreshed app data')
         this.loggingIn = false;
         //once all setup is done, then only set loggedIn=true to start rendering
-        this.startRendering();            
+        this.startRendering();
       });
     }
- 
+
   }
 
   isLoggedIn(): boolean {
@@ -542,7 +542,7 @@ export class NdkproviderService {
   }
 
   setRelaysForCurrentNdk(relayTags:NDKTag[]){
-    const newNdk = new NDK({      
+    const newNdk = new NDK({
       cacheAdapter: dexieAdapter,
       signer: this.signer,
       explicitRelayUrls: relayTags.map((tag) => tag[1]),
@@ -887,7 +887,7 @@ export class NdkproviderService {
           });
         } catch(e){
           console.log(e);
-        }        
+        }
       }
     }
     return returnValue;
@@ -913,7 +913,7 @@ export class NdkproviderService {
   async getApprovalEvents(id:string):Promise<Set<NDKEvent>|undefined>{
     const filter:NDKFilter = {
       //@ts-ignore
-      kinds:[4550], 
+      kinds:[4550],
       '#e':[id]
     }
     const approvalEvents = await this.ndk?.fetchEvents(filter,{});
@@ -983,12 +983,12 @@ export class NdkproviderService {
     if(event.kind == 4550){
       try{
         let sourceEvent = JSON.parse(event.content);
-        let returnedEvent =  new NDKEvent(this.ndk, sourceEvent);  
+        let returnedEvent =  new NDKEvent(this.ndk, sourceEvent);
         returnedEvent.relay = event.relay;
         return returnedEvent;
       }catch(e){
         return event;
-      }          
+      }
     }
     return event;
   }
@@ -1555,14 +1555,14 @@ export class NdkproviderService {
         for (let i = 0; i<relayEntriesFromNdk.length; i++){
           relays.push(new Relay(relayEntriesFromNdk[i],relayEntriesFromNdk[i]))
         }
-      }      
+      }
       return relays;
     }
     catch(e){
-      console.log("Error in fetching relay list from relay"); 
+      console.log("Error in fetching relay list from relay");
       return [];
     }
-    
+
   }
 
   async addRelayToDB(table: Table<Relay>, relay: Relay) {
@@ -1597,7 +1597,7 @@ export class NdkproviderService {
     try{
       var subscribedRelaysFromCache = await this.dbService.subscribedRelays.toArray();
       console.log(`Subscribed Relays from cache : ${subscribedRelaysFromCache?.length}`);
-  
+
       const subscribedRelaysFromRelay: Relay[] = await this.getUserSubscribedRelays();
       console.log("Got user subscribed relays")
       if (
@@ -1610,7 +1610,7 @@ export class NdkproviderService {
     } catch(e){
       console.log("Error in fetching relays.."+ e)
     }
-    
+
     return await this.dbService.subscribedRelays.toArray();
   }
 
