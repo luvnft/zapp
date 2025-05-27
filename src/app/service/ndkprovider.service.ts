@@ -62,7 +62,7 @@ export class NdkproviderService {
     mutedTopics: '',
     followedCommunities:''
   };
-  notice$ = new BehaviorSubject<string>('Initializing Hahz');
+  notice$ = new BehaviorSubject<string>('Initializing X');
   isNip05Verified$ = new BehaviorSubject<boolean>(false);
   fetchingPeopleIFollowFromRelay$ = new BehaviorSubject<boolean>(true);
   fetchingMutedUsersFromRelay$ = new BehaviorSubject<MutedUserMetaData>({ status: true, count: 0 });
