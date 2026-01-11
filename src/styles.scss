@@ -288,3 +288,26 @@ html {
 label[for="sats-for-zaps"] {
   display: none;
 }
+/* ================================
+   SAFE MOBILE LOGO OVERRIDE
+   (paste at bottom of file)
+   ================================ */
+
+@media screen and (max-width: 576px) {
+  .logo-header {
+    max-width: 22px !important;
+    height: auto !important;
+  }
+
+  .main-container .header .branding {
+    max-height: 40px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+@media only screen and (max-width: 320px) {
+  .logo-header {
+    max-width: 18px !important;
+  }
+}
