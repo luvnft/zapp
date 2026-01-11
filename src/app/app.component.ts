@@ -107,7 +107,7 @@ export class AppComponent implements OnInit, OnDestroy{
   private router: Router;
   sidebarCollapsed: false;
   followedTopics: string[] = [];
-  darkTheme: boolean = true;
+  darkTheme: boolean = false; // Changed from true to false
   wizardIsOpen: boolean = false;
   isNip05Verified:boolean = false;
   isNip05VerifiedForAuthorSub:Subscription = new Subscription();
@@ -154,7 +154,7 @@ export class AppComponent implements OnInit, OnDestroy{
       this.notices.push(message);
     })
 
-   
+
     var mediaSetting = localStorage.getItem(Constants.SHOWMEDIA);
     if(!mediaSetting){
       localStorage.setItem(Constants.SHOWMEDIA,'true');
@@ -168,10 +168,10 @@ export class AppComponent implements OnInit, OnDestroy{
       }
     }
     else {
-      this.setTheme(true);
+      this.setTheme(false); // Changed from true to false
     }
-    this.ndkProvider.loginCompleteEmitter.subscribe((loginComplete:boolean)=>{      
-      this.showZapSplitToastIfNecessary();  
+    this.ndkProvider.loginCompleteEmitter.subscribe((loginComplete:boolean)=>{
+      this.showZapSplitToastIfNecessary();
       this.topicService.fetchFollowedTopics().then(res=>{
             this.setFollowedTopicsFromString(res.join(','));
       })
@@ -230,7 +230,7 @@ export class AppComponent implements OnInit, OnDestroy{
       localStorage.setItem(Constants.ZAP_SPLIT_CONFIG, JSON.stringify(zapSplitConfig));
       this.translate.get('A default Zap split has been configured to support developers and translators, you can disable it at any time in Preferences').subscribe((res: string) => {
         this._toastService.info(res);
-      });    
+      });
     }
   }
 
