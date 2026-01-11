@@ -8,6 +8,21 @@ html{
   --bc-brand-mix: 100%; /* how much to mix the brand color with default foreground color */
 }
 
+/* ================================
+   FORCE LIGHT MODE AS DEFAULT
+   ================================ */
+
+:root,
+[cds-theme],
+[cds-theme="light"] {
+  color-scheme: light;
+}
+
+/* Optional: only apply dark styles when explicitly set */
+[cds-theme="dark"] {
+  color-scheme: dark;
+}
+
 // In the dark theme, these aliases are mapped to different values
 [cds-theme~='dark'] {
   --clr-card-border-color:#262f33;
@@ -48,8 +63,9 @@ html{
   overflow-wrap: break-word;
 }
 
-.logo-header{
+.logo-header {
   max-width: 36px;
+  height: auto;
 }
 
 .overflow-ellipsis {
