@@ -2,27 +2,47 @@
 @import 'snow.scss';
 
 /* You can add global styles to this file, and also import other style files */
+
+/* --- REDDIT BRAND COLORS --- */
 html {
-  --bc-color-brand: #196ce7;
-  --bc-color-brand-dark: #3994ff; /* use a different brand color in dark mode */
-  --bc-brand-mix: 100%; /* how much to mix the brand color with default foreground color */
+  /* Reddit's "Alien Blue" for primary actions */
+  --bc-color-brand: #0079D3; 
+  --bc-color-brand-dark: #3994ff; 
+  --bc-brand-mix: 100%;
 }
 
-/* --- UPDATED SECTION: FORCE DARK BACKGROUND --- */
+/* --- REDDIT LIGHT THEME (DEFAULT) --- */
+/* We apply this to body generally to make it the default */
+body, 
+.main-container,
+.content-container, 
+.content-area,
+[cds-theme~='light'] {
+  /* The classic Reddit Light Gray background */
+  background-color: #DAE0E6 !important; 
+  --clr-global-app-background: #DAE0E6 !important;
+  --clr-app-background: #DAE0E6 !important;
+  color: #1A1A1B; /* Reddit's high-contrast dark gray text */
+}
+
+/* Reddit uses white cards against the gray background */
+.card {
+  background-color: #FFFFFF !important;
+  border-radius: 0.25rem !important; /* Reddit uses slightly sharper corners than Clarity */
+  border: 1px solid #CCCCCC !important; /* Subtle border */
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1); /* Subtle lift */
+}
+
+/* --- KEEP DARK MODE (Just in case user switches) --- */
 [cds-theme~='dark'],
 body[cds-theme~='dark'],
-[cds-theme~='dark'] .main-container, 
-[cds-theme~='dark'] .content-container,
-[cds-theme~='dark'] .content-area {
-  /* Forces the Midnight Slate color on all main containers */
+[cds-theme~='dark'] .main-container {
   background-color: #0f172a !important; 
   --clr-global-app-background: #0f172a !important;
-  --clr-app-background: #0f172a !important;
-  
-  /* Updates the border to match */
   --clr-card-border-color: #1e293b !important;
+  color: #e2e8f0;
 }
-/* --------------------------------------------- */
+/* -------------------------------------------------- */
 
 [cds-theme] {
   --clr-header-search-border-hover: transparent;
@@ -32,27 +52,23 @@ body[cds-theme~='dark'],
   --clr-vertical-nav-item-font-size: var(--cds-global-typography-font-size-5);
 }
 
+/* Reddit-style cleaner scrollbar */
 ::-webkit-scrollbar {
-  width: 5px;
-  height: 5px;
+  width: 8px; /* Slightly wider for better UX */
+  height: 8px;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom right, #4d7fff 0%, var(--clr-btn-primary-border-color, hsl(198, 65%, 57%)) 100%);
-  border-radius: 5px;
+  background-color: #cccccc;
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #ddd;
-  border: 1px solid #ccc;
+  background-color: #f0f0f0;
 }
 
 .icon-nav-header:hover {
   background-color: transparent !important;
-}
-
-.card {
-  border-radius: 0.5rem !important;
 }
 
 .break-words-overflow {
@@ -89,6 +105,7 @@ body[cds-theme~='dark'],
 
 .feed-header-text {
   font-size: x-large;
+  color: #1A1A1B; /* Ensure headers are dark in light mode */
 }
 
 .select-feed-type {
@@ -100,7 +117,7 @@ body[cds-theme~='dark'],
 }
 
 .note-image {
-  border-radius: 10px;
+  border-radius: 4px; /* Matches Reddit visual style */
   display: block;
   margin: 10px auto;
   max-height: 500px;
@@ -135,7 +152,7 @@ body[cds-theme~='dark'],
   font-weight: var(--cds-global-typography-message-font-weight);
   line-height: var(--cds-global-typography-message-line-height);
   letter-spacing: var(--cds-global-typography-message-letter-spacing);
-  --color: #000;
+  --color: #1A1A1B; /* Explicit dark text */
 }
 
 .header-profile-image {
@@ -149,13 +166,14 @@ body[cds-theme~='dark'],
   margin-left: 3px;
 }
 
+/* Updated Search Box to look cleaner (Reddit style) */
 .search-text-box {
-  padding: 0.2rem;
+  padding: 0.5rem;
   left: 0;
   outline: none;
-  border: 1px solid #cdcdcd;
-  border-color: rgba(0, 0, 0, 0.15);
-  background-color: white;
+  border: 1px solid #edeff1;
+  border-radius: 20px; /* Reddit uses rounded search bars */
+  background-color: #f6f7f8;
 }
 
 .main-title-font {
@@ -163,6 +181,7 @@ body[cds-theme~='dark'],
   font-weight: bold !important;
   font-size: xx-large !important;
   overflow-x: visible;
+  color: #1A1A1B;
 }
 
 .larger-text {
@@ -183,417 +202,4 @@ body[cds-theme~='dark'],
 }
 
 .pt-10 {
-  padding-top: 10px;
-}
-
-a {
-  overflow-wrap: anywhere !important;
-}
-
-.smaller-text {
-  font-size: smaller;
-}
-
-.community-banner {
-  display: inline-block;
-  flex: 0 0 auto;
-  height: 2rem;
-  width: 2rem;
-  max-height: 9rem;
-  max-width: 2rem;
-  object-fit: cover;
-}
-
-.community-feed-banner {
-  object-fit: cover;
-  max-height: 9rem;
-}
-
-.inline-display {
-  display: inline;
-}
-
-.note-community-header {
-  font-size: 0.7rem;
-  letter-spacing: normal;
-  line-height: 1.2rem;
-}
-
-.community-image {
-  display: inline-block;
-  flex: 0 0 auto;
-  height: 2rem;
-  width: 2rem;
-  max-height: 2rem;
-  max-width: 2rem;
-  border-radius: 50%;
-}
-
-.onboarding-home-logo {
-  max-width: 200px;
-}
-
-.break-anywhere-overflow {
-  overflow-wrap: anywhere;
-}
-
-.hashtag-link,
-.hashtag-link:visited {
-  color: var(--clr-link-active-color, hsl(198, 65%, 57%)) !important;
-}
-
-.hashtag-link:hover {
-  background-color: var(--clr-link-active-color, hsl(198, 65%, 57%)) !important;
-  color: #fff !important;
-  border-radius: 5px;
-  padding: 2px;
-}
-
-.reply-card {
-  margin-left: 5px;
-}
-
-.mb-5 {
-  margin-bottom: 5px;
-}
-
-.mr-half-rem {
-  padding-right: 0.5rem;
-}
-
-.compose-note {
-  width: 100%;
-  height: 7rem;
-  border: none;
-  outline: none;
-}
-
-.compose-reply {
-  width: 100%;
-  height: 4rem;
-  border: none;
-  outline: none;
-}
-
-.compose-note:focus,
-.compose-reply:focus {
-  outline: none !important;
-}
-
-.hidden-card-message {
-  margin: .7em auto;
-  overflow: hidden;
-  text-align: center;
-  font-weight: 300;
-}
-
-.hidden-card-message:before,
-.hidden-card-message:after {
-  content: "";
-  display: inline-block;
-  width: 50%;
-  margin: 0 .5em 0 -55%;
-  vertical-align: middle;
-  border-bottom: 2px dashed var(--clr-btn-default-color, hsl(198, 100%, 32%));
-}
-
-.hidden-card-message:after {
-  margin: 0 -55% 0 .5em;
-}
-
-.hidden-card-span {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.reply-container {
-  border-left-style: solid !important;
-  border-left: 1px;
-  border-left-color: var(--clr-btn-primary-border-color, hsl(198, 65%, 57%));
-}
-
-.reply-count {
-  float: left;
-  width: 35px;
-  height: 35px;
-  border-width: 1px;
-  border-style: solid;
-  margin: -2px 0 0 0px;
-  border-color: #00000000 #00000000 var(--clr-btn-primary-border-color, hsl(198, 65%, 57%)) var(--clr-btn-primary-border-color, hsl(198, 65%, 57%));
-  border-bottom-left-radius: 10px;
-}
-
-.less-top-margin-feed-type {
-  margin-top: 0.2rem !important;
-}
-
-.reply-count-parent {
-  display: flex;
-  align-content: flex-end !important;
-  align-items: flex-end;
-  z-index: 10000;
-}
-
-.link-comment-parent-line {
-  display: block;
-  margin-left: -1px;
-}
-
-mention-list>ul {
-  visibility: visible !important;
-}
-
-.hashtag-search {
-  border-radius: 1em;
-  border: none !important;
-  font-size: 1.1em;
-  padding-left: 1.5em !important;
-  margin-left: 1em !important;
-  background-color: #cdcdcd !important;
-  color: #000 !important;
-  outline: none;
-  box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px hsl(0, 0%, 2%);
-}
-
-.hashtag-search::placeholder {
-  color: #000 !important;
-}
-
-.search_form_mobile {
-  display: none;
-}
-
-.online-video-size {
-  width: 480px;
-  height: 275px;
-}
-
-.clr-wizard-stepnav-wrapper {
-  display: none;
-}
-
-@media screen and (max-width: 576px) {
-  .main-container .header .branding {
-    max-width: 12rem;
-  }
-
-  .main-title-font {
-    font-size: 1.5rem !important;
-  }
-
-  .online-video-size {
-    width: 300px;
-    height: 180px;
-  }
-
-  .youtube-player {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
-    width: 100%;
-    background: #000;
-    margin: 5px;
-  }
-
-  .youtube-player .play {
-    height: 48px;
-    width: 68px;
-    left: 38% !important;
-    top: 42% !important;
-    position: absolute;
-    background: url('./assets/youtubeplay.png') no-repeat;
-    cursor: pointer;
-  }
-
-  .center-textbox {
-    margin-left: 0px;
-  }
-
-  .sats-center {
-    display: flex;
-    justify-content: center;
-    padding-left: 10px;
-  }
-}
-
-/* Smartphones (portrait) ----------- */
-@media only screen and (max-width: 320px) {
-  .online-video-size {
-    max-width: 12rem;
-  }
-
-  .youtube-player .play {
-    height: 48px;
-    width: 68px;
-    left: 38%;
-    top: 42%;
-    position: absolute;
-    background: url('./assets/youtubeplay.png') no-repeat;
-    cursor: pointer;
-  }
-
-  .center-textbox {
-    margin-left: 0px;
-  }
-
-  .sats-center {
-    display: flex;
-    justify-content: center;
-    padding-left: 10px;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .search_form {
-    display: none;
-  }
-
-  .hashtag-search {
-    display: none !important;
-  }
-
-  .clr-wizard-stepnav-wrapper {
-    display: none !important;
-  }
-
-  .search_form_mobile {
-    display: block;
-  }
-
-  .hashtag-search-mobile {
-    margin-right: 5px;
-    border-radius: 1em;
-    border: none !important;
-    font-size: 1.1em;
-    padding-left: 1.5em !important;
-    color: #000 !important;
-    outline: none;
-    box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px hsl(0, 0%, 2%);
-  }
-
-  .center-textbox {
-    margin-left: -35px;
-  }
-}
-
-.pt-5 {
-  padding-top: 5px;
-}
-
-.pt-10 {
-  padding-top: 10px;
-}
-
-.card-media-block .card-media-meta {
-  display: inline-block;
-  font-size: smaller;
-  color: gray;
-}
-
-* {
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
-  -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
-  outline: none !important;
-}
-
-.purple {
-  color: #320047;
-}
-
-.youtube-player img:hover {
-  -webkit-filter: brightness(75%);
-}
-
-.youtube-player .play {
-  height: 48px;
-  width: 68px;
-  left: 44%;
-  top: 55%;
-  position: absolute;
-  background: url('./assets/youtubeplay.png') no-repeat;
-  cursor: pointer;
-}
-
-.center-textbox {
-  margin-left: -35px;
-}
-
-.sats-center {
-  display: flex;
-  justify-content: center;
-}
-
-.ml-20 {
-  margin-left: 20px;
-}
-
-.ml-5 {
-  margin-left: 5px;
-}
-
-.mt-12 {
-  margin-top: 12px;
-}
-
-.mt-20 {
-  margin-top: 20px;
-}
-
-label[for="sats-for-zaps"] {
-  display: none;
-}
-
-@media only screen and (min-width: 1024px) {
-  .sats-width {
-    padding: 0 130px;
-  }
-}
-
-.end {
-  text-align: end;
-}
-
-.page-center {
-  position: absolute;
-  left: 58%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-.approval-header {
-  padding: 8px !important;
-}
-
-.approval-header-text {
-  font-size: 0.71rem !important;
-}
-
-.pl-5 {
-  padding-left: 5px;
-}
-
-.collapse-icon-dark {
-  background-color: var(--cds-global-color-blue-1000);
-  margin-left: -8px;
-}
-
-.collapse-icon-light {
-  background-color: var(--cds-global-color-gray-0);
-  margin-left: -8px;
-}
-
-@media screen and (max-width: 576px) {
-  .logo-header {
-    max-width: 22px !important;
-    height: auto !important;
-  }
-}
-
-@media only screen and (max-width: 320px) {
-  .logo-header {
-    max-width: 18px !important;
-  }
-}
+  padding-
