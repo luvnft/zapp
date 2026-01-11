@@ -1,40 +1,43 @@
 @import '@clr/ui/clr-ui.css';
 @import 'snow.scss';
 
-/* You can add global styles to this file, and also import other style files */
-html{
+/* ======================================================
+   GLOBAL / THEME
+   ====================================================== */
+
+html {
   --bc-color-brand: #196ce7;
-  --bc-color-brand-dark: #3994ff; /* use a different brand color in dark mode */
-  --bc-brand-mix: 100%; /* how much to mix the brand color with default foreground color */
+  --bc-color-brand-dark: #3994ff;
+  --bc-brand-mix: 100%;
 }
 
-/* ================================
-   FORCE LIGHT MODE AS DEFAULT
-   ================================ */
-
+/* FORCE LIGHT MODE DEFAULT */
 :root,
 [cds-theme],
 [cds-theme="light"] {
   color-scheme: light;
 }
 
-/* Optional: only apply dark styles when explicitly set */
 [cds-theme="dark"] {
   color-scheme: dark;
 }
 
-// In the dark theme, these aliases are mapped to different values
+/* Dark theme overrides */
 [cds-theme~='dark'] {
-  --clr-card-border-color:#262f33;
+  --clr-card-border-color: #262f33;
 }
 
-[cds-theme]{
-  --clr-header-search-border-hover:transparent;
-  --clr-header-search-border-active:transparent;
-  --clr-header-search-input-font-size:1.3rem;
+[cds-theme] {
+  --clr-header-search-border-hover: transparent;
+  --clr-header-search-border-active: transparent;
+  --clr-header-search-input-font-size: 1.3rem;
   --clr-accordion-title-font-size: 0.85rem;
   --clr-vertical-nav-item-font-size: var(--cds-global-typography-font-size-5);
 }
+
+/* ======================================================
+   SCROLLBAR
+   ====================================================== */
 
 ::-webkit-scrollbar {
   width: 5px;
@@ -42,7 +45,11 @@ html{
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(to bottom right, #4d7fff 0%, var(--clr-btn-primary-border-color,hsl(198, 65%, 57%)) 100%);
+  background: linear-gradient(
+    to bottom right,
+    #4d7fff 0%,
+    var(--clr-btn-primary-border-color, hsl(198, 65%, 57%)) 100%
+  );
   border-radius: 5px;
 }
 
@@ -51,96 +58,17 @@ html{
   border: 1px solid #ccc;
 }
 
-.icon-nav-header:hover{
-  background-color: transparent!important;
-}
-
-.card{
-  border-radius: 0.5rem!important;
-}
-
-.break-words-overflow {
-  overflow-wrap: break-word;
-}
+/* ======================================================
+   HEADER / LOGO
+   ====================================================== */
 
 .logo-header {
   max-width: 36px;
   height: auto;
 }
 
-.overflow-ellipsis {
-  text-overflow: ellipsis;
-}
-
-.pointer-cursor{
-  cursor: pointer;
-}
-
-.overflow-hidden {
-  overflow:hidden
-}
-
-.btc-icon{
-  --color: #F9A136;
-}
-
-.connect-icon{
-  --color: #9E57BC;
-}
-
-.giant-text-in-select{
-  font-size: x-large!important;
-}
-
-.feed-header-text{
-  font-size: x-large;
-}
-
-.select-feed-type {
-  background-color: transparent!important;
-}
-
-.option-feed-type {
-  background-color: var(--clr-dropdown-bg-color) ;
-}
-
-.note-image {
-  border-radius: 10px;
-  display: block;
-  margin: 10px auto;
-  max-height: 500px;
-  max-width: 100%;
-}
-
-.card-media-image {
-  border-radius: 50%;
-}
-
-.img-container{
-  position: relative;
-  text-align: center;
-}
-
-.text-img-overlay-centered {
-  position: absolute;
-  color:#000;
-  top: 50%;
-  border-radius: 0.25rem;
-  background-color:#e6e6fa61;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.monospace{
-  font-family: monospace;
-}
-
-.card-text{
-font-size:var(--cds-global-typography-message-font-size);
-font-weight:var(--cds-global-typography-message-font-weight);
-line-height:var(--cds-global-typography-message-line-height);
-letter-spacing:var(--cds-global-typography-message-letter-spacing);
---color:#000
+.icon-nav-header:hover {
+  background-color: transparent !important;
 }
 
 .header-profile-image {
@@ -154,447 +82,209 @@ letter-spacing:var(--cds-global-typography-message-letter-spacing);
   margin-left: 3px;
 }
 
-.search-text-box {
-  padding: 0.2rem;
-  left: 0;
-  outline: none;
-  border: 1px solid #cdcdcd;
-  border-color: rgba(0, 0, 0, 0.15);
-  background-color: white;
-}
+/* ======================================================
+   TYPOGRAPHY
+   ====================================================== */
 
-.main-title-font{
-  font-family: 'Solway', serif!important;
-  font-weight: bold!important;
-  font-size:xx-large!important;
+.main-title-font {
+  font-family: 'Solway', serif !important;
+  font-weight: bold !important;
+  font-size: xx-large !important;
   overflow-x: visible;
 }
 
-.larger-text{
-  font-size: larger;
+.feed-header-text {
+  font-size: x-large;
 }
 
-.event-loading-spinner{
-  text-align: center;
-  margin-top: 20px;
-}
-
-.bold-text{
-  font-weight: bold;
-}
-
-.mt-0{
-  margin-top:0px;
-}
-
-.pt-10{
-  padding-top: 10px;
-}
-
-a{
-  overflow-wrap: anywhere!important
-}
-
-.smaller-text{
+.smaller-text {
   font-size: smaller;
 }
 
-.community-banner {
-  display: inline-block;
-    flex: 0 0 auto;
-    height: 2rem;
-    width: 2rem;
-    max-height: 9rem;
-    max-width: 2rem;
-    object-fit:cover;
+.bold-text {
+  font-weight: bold;
 }
 
-.community-feed-banner{
-  object-fit: cover;
-  max-height:9rem;
+/* ======================================================
+   CARDS / MEDIA
+   ====================================================== */
+
+.card {
+  border-radius: 0.5rem !important;
 }
 
-.inline-display{
-  display:inline;
+.card-media-image {
+  border-radius: 50%;
 }
 
-.note-community-header{
-  font-size: 0.7rem;
-  letter-spacing: normal;
-  line-height: 1.2rem;
+.card-text {
+  font-size: var(--cds-global-typography-message-font-size);
+  font-weight: var(--cds-global-typography-message-font-weight);
+  line-height: var(--cds-global-typography-message-line-height);
+  letter-spacing: var(--cds-global-typography-message-letter-spacing);
 }
 
-.community-image{
-  display: inline-block;
-    flex: 0 0 auto;
-    height: 2rem;
-    width: 2rem;
-    max-height: 2rem;
-    max-width: 2rem;
-    border-radius: 50%;
+.card-media-block .card-media-meta {
+  font-size: smaller;
+  color: gray;
 }
 
-.onboarding-home-logo{
-  max-width: 200px;
+/* ======================================================
+   IMAGES
+   ====================================================== */
 
+.note-image {
+  border-radius: 10px;
+  display: block;
+  margin: 10px auto;
+  max-height: 500px;
+  max-width: 100%;
 }
 
-.break-anywhere-overflow{
-  overflow-wrap: anywhere;
-}
-
-.hashtag-link, .hashtag-link:visited{
-  color: var(--clr-link-active-color,hsl(198, 65%, 57%)) !important
-}
-
-.hashtag-link:hover{
-  background-color:var(--clr-link-active-color,hsl(198, 65%, 57%)) !important;
-  color: #fff!important;
-  border-radius: 5px;
-  padding:2px;
-}
-
-.reply-card{
-  margin-left:5px;
-}
-
-.mb-5{
-  margin-bottom: 5px;
-}
-
-.mr-half-rem{
-  padding-right:0.5rem;
-}
-
-.compose-note{
-  width: 100%;
-  height: 7rem;
-  border: none;
-  outline: none;
-}
-
-.compose-reply{
-  width: 100%;
-  height: 4rem;
-  border: none;
-  outline: none;
-}
-
-.compose-note:focus,
-.compose-reply:focus{
-  outline: none !important;
-}
-
-.hidden-card-message {
-  margin: .7em auto;
-  overflow: hidden;
+.img-container {
+  position: relative;
   text-align: center;
-  font-weight:300;
-}
-.hidden-card-message:before, .hidden-card-message:after {
-  content: "";
-  display: inline-block;
-  width: 50%;
-  margin: 0 .5em 0 -55%;
-  vertical-align: middle;
-  border-bottom: 2px dashed var(--clr-btn-default-color, hsl(198, 100%, 32%));
-}
-.hidden-card-message:after {
-  margin: 0 -55% 0 .5em;
-}
-.hidden-card-span {
-  display: inline-block;
-  vertical-align: middle;
 }
 
-.reply-container{
-  border-left-style: solid!important;
-  border-left: 1px;
-  border-left-color: var(--clr-btn-primary-border-color,hsl(198, 65%, 57%));
+.text-img-overlay-centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #e6e6fa61;
+  border-radius: 0.25rem;
 }
 
-.reply-count{
-  float:left;
-  width:35px;
-  height:35px;
-  border-width:1px;
-  border-style:solid;
-  margin:-2px 0 0 0px;
-  border-color: #00000000 #00000000 var(--clr-btn-primary-border-color,hsl(198, 65%, 57%)) var(--clr-btn-primary-border-color,hsl(198, 65%, 57%)) ;
-  border-bottom-left-radius:10px
-}
+/* ======================================================
+   VIDEO
+   ====================================================== */
 
-.less-top-margin-feed-type{
-  margin-top:0.2rem !important;
-}
-
-.reply-count-parent{
-  display: flex;
-  align-content: flex-end !important;
-  align-items: flex-end;
-  z-index: 10000;
-}
-
-.link-comment-parent-line{
-  display: block; margin-left: -1px;
-}
-
-mention-list > ul{
-  visibility:visible!important;
-}
-
-
-.hashtag-search{
-    border-radius: 1em;
-    border: none!important;
-    font-size: 1.1em;
-    padding-left: 1.5em!important;
-    margin-left: 1em!important;
-    background-color: #cdcdcd!important;
-    color:#000!important;
-    outline: none;
-    box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px hsl(0, 0%, 2%)
-}
-
-.hashtag-search::placeholder{
-  color:#000!important;
-}
-
-.search_form_mobile{
-  display:none;
-}
-
-.online-video-size{
+.online-video-size {
   width: 480px;
   height: 275px;
 }
 
-.clr-wizard-stepnav-wrapper{
-  display:none;
+.youtube-player {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  background: #000;
 }
+
+.youtube-player .play {
+  height: 48px;
+  width: 68px;
+  position: absolute;
+  background: url('./assets/youtubeplay.png') no-repeat;
+  cursor: pointer;
+}
+
+/* ======================================================
+   FORMS / SEARCH
+   ====================================================== */
+
+.search_form_mobile {
+  display: none;
+}
+
+.hashtag-search {
+  border-radius: 1em;
+  background-color: #cdcdcd !important;
+}
+
+/* ======================================================
+   MOBILE — ≤576px
+   ====================================================== */
 
 @media screen and (max-width: 576px) {
+
+  /* Header + logo */
   .main-container .header .branding {
     max-width: 12rem;
+    max-height: 40px;
+    display: flex;
+    align-items: center;
   }
 
-  /* --- ADD THIS SECTION --- */
+  .logo-header {
+    max-width: 22px;
+  }
+
   .main-title-font {
-    font-size: 1.5rem !important; /* Adjust this value (e.g., 1.2rem or 18px) as needed */
-  }
-  /* ------------------------ */
-
-  .online-video-size{
-    width: 300px ;
-    height: 180px ;
+    font-size: 1.4rem !important;
   }
 
-  .online-video-size{
-    width: 300px ;
-    height: 180px ;
-  }
-
-  .youtube-player {
-    position: relative;
-    padding-bottom: 56.25%;
-    height: 0;
-    overflow: hidden;
-    max-width: 100%;
-    width: 100%;
-    background: #000;
-    margin: 5px;
+  /* Video */
+  .online-video-size {
+    width: 300px;
+    height: 180px;
   }
 
   .youtube-player .play {
-    height: 48px;
-    width: 68px;
-    left: 38% !important;
-    top: 42% !important;
-    position: absolute;
-    background: url('./assets/youtubeplay.png') no-repeat;
-    cursor: pointer;
-  }
-
-  .center-textbox{
-    margin-left:0px;
-  }
-
-
-.sats-center{
-  display: flex;
-  justify-content: center;
-  padding-left: 10px ;
-}
-}
-
-/* Smartphones (portrait) ----------- */
-@media only screen
-and (max-width : 320px) {
-  .online-video-size{
-    max-width: 12rem ;
-  }
-
-  .youtube-player .play {
-    height: 48px;
-    width: 68px;
     left: 38%;
     top: 42%;
-    position: absolute;
-    background: url('./assets/youtubeplay.png') no-repeat;
-    cursor: pointer;
   }
 
+  /* Layout */
+  .center-textbox {
+    margin-left: 0;
+  }
 
-.center-textbox{
-  margin-left:0px;
+  .sats-center {
+    display: flex;
+    justify-content: center;
+    padding-left: 10px;
+  }
 }
 
-.sats-center{
-  display: flex;
-  justify-content: center;
-  padding-left: 10px ;
+/* ======================================================
+   SMALL PHONES — ≤320px
+   ====================================================== */
+
+@media only screen and (max-width: 320px) {
+  .logo-header {
+    max-width: 18px;
+  }
+
+  .online-video-size {
+    max-width: 12rem;
+  }
 }
 
-}
+/* ======================================================
+   TABLET — ≤768px
+   ====================================================== */
 
 @media only screen and (max-width: 768px) {
-  .search_form{
+  .search_form {
     display: none;
   }
 
-  .hashtag-search{
-    display: none !important;
-  }
-
-  .clr-wizard-stepnav-wrapper{
-    display:none !important;
-  }
-
-  .search_form_mobile{
-    display:block;
-  }
-
-  .hashtag-search-mobile{
-    margin-right: 5px;
-    border-radius: 1em;
-    border: none!important;
-    font-size: 1.1em;
-    padding-left: 1.5em!important;
-    color:#000!important;
-    outline: none;
-    box-shadow: 0 4px 6px -5px hsl(0, 0%, 40%), inset 0px 4px 6px -5px hsl(0, 0%, 2%)
-  }
-
-  .center-textbox{
-    margin-left: -35px;
+  .search_form_mobile {
+    display: block;
   }
 }
 
-.pt-5{
-  padding-top:5px
-}
-
-.pt-10{
-  padding-top:10px
-}
-
-.card-media-block .card-media-meta {
-  display: inline-block;
-  font-size:smaller;
-  color:gray
-}
-
-* {
-  -webkit-tap-highlight-color: rgba(255, 255, 255, 0) !important;
-  -webkit-focus-ring-color: rgba(255, 255, 255, 0) !important;
-  outline: none !important;
-  }
-
-  .purple{
-    color: #320047;
-  }
-
-  .youtube-player img:hover {
-    -webkit-filter: brightness(75%);
-  }
-
-  .youtube-player .play {
-    height: 48px;
-    width: 68px;
-    left: 44%;
-    top: 55%;
-    position: absolute;
-    background: url('./assets/youtubeplay.png') no-repeat;
-    cursor: pointer;
-  }
-
-.center-textbox{
-  margin-left: -35px;
-}
-
-.sats-center{
-  display: flex;
-  justify-content: center;
-}
-
-.ml-20{
-  margin-left: 20px;
-}
-
-.ml-5{
-  margin-left: 5px;
-}
-
-.mt-12{
-  margin-top: 12px;
-}
-
-.mt-20{
-  margin-top:20px;
-}
-
-
-label[for="sats-for-zaps"]
-{
-    display:none;
-}
+/* ======================================================
+   DESKTOP — ≥1024px
+   ====================================================== */
 
 @media only screen and (min-width: 1024px) {
-  .sats-width{
+  .sats-width {
     padding: 0 130px;
   }
 }
 
-.end{
-  text-align: end;
+/* ======================================================
+   MISC
+   ====================================================== */
+
+* {
+  -webkit-tap-highlight-color: transparent !important;
+  outline: none !important;
 }
 
-.page-center{
-  position: absolute;
-  left: 58%;
-  top: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  transform: translate(-50%, -50%);
-}
-
-.approval-header{
-  padding: 8px !important;
-}
-
-.approval-header-text{
-  font-size: 0.71rem !important;
-}
-
-.pl-5{
-  padding-left: 5px;
-}
-
-.collapse-icon-dark{
-  background-color: var(--cds-global-color-blue-1000);
-  margin-left: -8px;
-}
-
-.collapse-icon-light{
-  background-color: var(--cds-global-color-gray-0);
-  margin-left: -8px;
+label[for="sats-for-zaps"] {
+  display: none;
 }
