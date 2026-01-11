@@ -18,7 +18,7 @@ html{
   --clr-header-search-border-active:transparent;
   --clr-header-search-input-font-size:1.3rem;
   --clr-accordion-title-font-size: 0.85rem;
-  --clr-vertical-nav-item-font-size: var(--cds-global-typography-font-size-5);  
+  --clr-vertical-nav-item-font-size: var(--cds-global-typography-font-size-5);
 }
 
 ::-webkit-scrollbar {
@@ -360,6 +360,17 @@ mention-list > ul{
 @media screen and (max-width: 576px) {
   .main-container .header .branding {
     max-width: 12rem;
+  }
+
+  /* --- ADD THIS SECTION --- */
+  .main-title-font {
+    font-size: 1.5rem !important; /* Adjust this value (e.g., 1.2rem or 18px) as needed */
+  }
+  /* ------------------------ */
+
+  .online-video-size{
+    width: 300px ;
+    height: 180px ;
   }
 
   .online-video-size{
