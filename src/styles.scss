@@ -311,3 +311,12 @@ label[for="sats-for-zaps"] {
     max-width: 18px !important;
   }
 }
+/* mobile logo only */
+@media screen and (max-width: 576px) {
+  .logo-header { max-width: 22px !important; height: auto !important; }
+}
+
+/* ultra-small phones */
+@media only screen and (max-width: 320px) {
+  .logo-header { max-width: 18px !important; }
+}
