@@ -362,17 +362,6 @@ mention-list > ul{
     max-width: 12rem;
   }
 
-  /* --- ADD THIS SECTION --- */
-  .main-title-font {
-    font-size: 1.5rem !important; /* Adjust this value (e.g., 1.2rem or 18px) as needed */
-  }
-  /* ------------------------ */
-
-  .online-video-size{
-    width: 300px ;
-    height: 180px ;
-  }
-
   .online-video-size{
     width: 300px ;
     height: 180px ;
@@ -581,16 +570,4 @@ label[for="sats-for-zaps"]
 .collapse-icon-light{
   background-color: var(--cds-global-color-gray-0);
   margin-left: -8px;
-}
-@media screen and (max-width: 576px) {
-  .logo-header {
-    max-width: 22px !important;
-    height: auto !important;
-  }
-}
-
-@media only screen and (max-width: 320px) {
-  .logo-header {
-    max-width: 18px !important;
-  }
 }

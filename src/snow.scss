@@ -2,7 +2,8 @@ $snowflakes: 40;
 
 %snowflake {
 	display: block;
-	color: #fff;
+	/* CHANGE 1: Use Ice Blue (#a6d4fa) so snow is visible on white background */
+	color: #a6d4fa; 
 	position: absolute;
 	top: -1em;
 	
@@ -29,11 +30,8 @@ $snowflakes: 40;
 	}	
 }
 
-html, body {
-	height: 100%;
-    overflow: hidden;
-
-}
+/* CHANGE 2: DELETE THIS BLOCK. It breaks scrolling on your website. */
+/* html, body { height: 100%; overflow: hidden; } */
 
 @keyframes snowflake-fall {
 	0% {top: -1em}
@@ -52,6 +50,9 @@ html, body {
 }
 
 snowflakes {
+	/* CHANGE 3: Add this so users can click buttons *behind* the snow */
+	pointer-events: none; 
+	
 	@for $i from 1 through $snowflakes {
 		@include snowflake($i);
 	}	
