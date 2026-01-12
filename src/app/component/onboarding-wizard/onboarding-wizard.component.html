@@ -1,4 +1,4 @@
-<clr-wizard [clrWizardOpen]="open" clrWizardSize="md" [clrWizardClosable]="false" >
+<clr-wizard [clrWizardOpen]="open" clrWizardSize="md" [clrWizardClosable]="false">
     <clr-wizard-title translate>Get Started</clr-wizard-title>
 
     <clr-wizard-button [type]="'cancel'" (click)="markWizardClosed()" translate>Cancel</clr-wizard-button>
@@ -7,14 +7,14 @@
     <clr-wizard-button [type]="'finish'" (click)="acceptChoices()" translate>Finish</clr-wizard-button>
 
     <clr-wizard-page>
-        <ng-template clrPageTitle>{{'Hey there'|translate}} 👋</ng-template>
+        <ng-template clrPageTitle>{{'Welcome to the RFP Marketplace'|translate}} 👋</ng-template>
         <div class="card">
-            <h3 class="card-header">{{'Welcome onboard'|translate}} 🫂</h3>
+            <h3 class="card-header">{{'Professional Network Setup'|translate}} 🏢</h3>
             <div class="card-block">
-                {{'I\'m zapddit, a topic-based nostr browser.  Here, you follow topics, not people.'|translate}}
-                <p translate>Travel with me, answering a few questions, while I set you up to enjoy the <span class="label label-info">#zapddit</span>experience 🚀</p>
+                {{'Welcome to our RFP marketplace. Here you can discover opportunities, post requests, and collaborate on professional projects.'|translate}}
+                <p translate>Let's tailor your experience by answering a few questions about your role and preferences.</p>
                 <p translate>Click 'Next' to begin.</p>
-            </div>                    
+            </div>
         </div>
     </clr-wizard-page>
 
@@ -25,13 +25,13 @@
                 <div class="card">
                     <h3 class="card-header" translate>Backup your private key</h3>
                     <div class="card-block">
-                        {{"Click on the button below to copy your private key. Keep it in a safe place.  Don't share this with anyone."|translate}} 
-                        <p translate>This is the key to access your nostr account across all clients.</p>
+                        {{"Click on the button below to copy your private key. Keep it in a safe place. Don't share this with anyone."|translate}}
+                        <p translate>This is the key to access your professional account across all platforms.</p>
                         <button type="button" class="btn btn-primary" (click)="copyPrivateKey()" translate>Copy to clipboard</button>
-                    </div>                    
+                    </div>
                 </div>
             </div>
-        </div>  
+        </div>
     </clr-wizard-page>
 
     <clr-wizard-page *ngIf="ndkProvider.isNewToNostr">
@@ -39,102 +39,122 @@
         <div class="clr-row">
             <div class="clr-col-12">
                 <div class="card">
-                    <h3 class="card-header" translate>Setup your profile</h3>
+                    <h3 class="card-header" translate>Setup your professional profile</h3>
                     <div class="card-block">
                         <form clrForm onsubmit="return false;">
                             <clr-input-container>
-                                <label translate>Your Name</label>
+                                <label translate>Your Name / Company Name</label>
                                 <input clrInput
                                 type="text"
                                 id="nostr-display-name"
                                 [(ngModel)]="newUserDisplayName"
-                                placeholder="{{'Give yourself a cool name here...'|translate}}" 
+                                placeholder="{{'Enter your professional name...'|translate}}"
                                 name="display-name">
-                                <clr-control-helper translate>This is how people will refer to you on the nostr ecosystem</clr-control-helper>
-                            </clr-input-container>                           
+                                <clr-control-helper translate>This is how you'll be identified in business proposals and discussions</clr-control-helper>
+                            </clr-input-container>
                         </form>
-                        
-                    </div>                    
+
+                    </div>
                 </div>
             </div>
-        </div>  
+        </div>
     </clr-wizard-page>
 
     <clr-wizard-page>
-        <ng-template clrPageTitle translate>Follow list</ng-template>
+        <ng-template clrPageTitle translate>Mute List</ng-template>
         <div class="clr-row">
             <div class="clr-col-12">
                 <div class="card">
-                    <h3 class="card-header" translate>Who are you?</h3>
+                    <h3 class="card-header" translate>What do you want to avoid?</h3>
                     <div class="card-block">
-                        <h4 class="card-title">{{'Select those that closely resemble you'|translate}} 👇</h4>
-                        <clr-checkbox-container>
-                            <clr-checkbox-wrapper>
-                                <input type="checkbox" clrCheckbox name="dailyDoseSeeker" [(ngModel)]="dailyDoseSeeker" (change)="updateTopics()" />
-                                <label>{{'I wish to start my day with a daily dose of nostr'|translate}} ☕</label>
-                            </clr-checkbox-wrapper>
-                            <clr-checkbox-wrapper>
-                                <input type="checkbox" clrCheckbox name="memeEnjoyer" [(ngModel)]="memeEnjoyer" (change)="updateTopics()" />
-                                <label>{{'I want memes! MEMES!'|translate}} 😆</label>
-                            </clr-checkbox-wrapper>
-                            <clr-checkbox-wrapper>
-                                <input type="checkbox" clrCheckbox name="newsReader" [(ngModel)]="newsReader" (change)="updateTopics()" />
-                                <label>{{'I am a big news bug'|translate}} 📰</label>
-                            </clr-checkbox-wrapper>
-                            <clr-checkbox-wrapper>
-                                <input type="checkbox" clrCheckbox name="questionAnswerer" [(ngModel)]="questionAnswerer" (change)="updateTopics()" />
-                                <label>{{'I like answering questions of others'|translate}} 🤔</label>
-                            </clr-checkbox-wrapper>
-                            <clr-checkbox-wrapper>
-                                <input type="checkbox" clrCheckbox name="btcMaxi" [(ngModel)]="btcMaxi" (change)="updateTopics()"/>
-                                <label>{{'I am an ardent Bitcoin nerd'|translate}} 🤓</label>
-                            </clr-checkbox-wrapper>
-                            <clr-checkbox-wrapper>
-                                <input type="checkbox" clrCheckbox name="foodLover" [(ngModel)]="foodLover" (change)="updateTopics()"/>
-                                <label>{{'I ❤️ food pictures'|translate}} 😋</label>
-                            </clr-checkbox-wrapper>
-                            <clr-checkbox-wrapper>
-                                <input type="checkbox" clrCheckbox name="plebLover" [(ngModel)]="plebLover" (change)="updateTopics()"/>
-                                <label>{{'I like welcoming new users'|translate}} 🫂</label>
-                            </clr-checkbox-wrapper>
-                            <clr-checkbox-wrapper>
-                                <input type="checkbox" clrCheckbox name="clientsFan" [(ngModel)]="clientsFan" (change)="updateTopics()"/>
-                                <label>{{'I need the hot goss about nostr clients'|translate}} 🧑‍💻</label>
-                            </clr-checkbox-wrapper>
-                          </clr-checkbox-container>
-                    </div>                    
-                </div>
-            </div>
-        </div>  
-    </clr-wizard-page>
-
-    <clr-wizard-page>
-        <ng-template clrPageTitle translate>Mute list</ng-template>
-        <div class="clr-row">
-            <div class="clr-col-12">
-                <div class="card">
-                    <h3 class="card-header" translate>What annoys you?</h3>
-                    <div class="card-block">
-                        <h4 class="card-title" translate>Choose the ones that gravely annoy you</h4>
+                        <h4 class="card-title" translate>Filter out RFPs and discussions that aren't relevant to your work</h4>
                         <div class="card-text">
                             <clr-checkbox-wrapper>
-                                <input type="checkbox" clrCheckbox name="cryptoRepeller" [(ngModel)]="cryptoRepeller" (change)="updateMuteList()" />
-                                <label>{{'Bitcoin/Crypto Talk'|translate}} 🪙</label>
+                                <input type="checkbox" clrCheckbox name="lowBudgetRepeller" [(ngModel)]="lowBudgetRepeller" (change)="updateMuteList()" />
+                                <label>{{'Low-budget or unpaid requests'|translate}} 💰</label>
                             </clr-checkbox-wrapper>
                             <clr-checkbox-wrapper>
-                                <input type="checkbox" clrCheckbox name="weirdStuffRepeller" [(ngModel)]="weirdStuffRepeller" (change)="updateMuteList()" />
-                                <label>{{'Weird stuff (like feet stuff)'|translate}} 🦶 </label>
+                                <input type="checkbox" clrCheckbox name="vagueScopeRepeller" [(ngModel)]="vagueScopeRepeller" (change)="updateMuteList()" />
+                                <label>{{'Vague or poorly scoped RFPs'|translate}} 📄</label>
                             </clr-checkbox-wrapper>
                             <clr-checkbox-wrapper>
-                                <input type="checkbox" clrCheckbox name="nonSporter" [(ngModel)]="nonSporter" (change)="updateMuteList()" />
-                                <label>{{'Sports'|translate}} ⚽ </label>
+                                <input type="checkbox" clrCheckbox name="cryptoSpeculativeRepeller" [(ngModel)]="cryptoSpeculativeRepeller" (change)="updateMuteList()" />
+                                <label>{{'Crypto-only / speculative projects'|translate}} ₿</label>
                             </clr-checkbox-wrapper>
                             <clr-checkbox-wrapper>
-                                <input type="checkbox" clrCheckbox name="twitterHater" [(ngModel)]="twitterHater" (change)="updateMuteList()" />
-                                <label>{{'Twitter / Bird app'|translate}} 🐔 </label>
+                                <input type="checkbox" clrCheckbox name="sportsEntertainmentRepeller" [(ngModel)]="sportsEntertainmentRepeller" (change)="updateMuteList()" />
+                                <label>{{'Sports & entertainment sponsorships'|translate}} ⚽</label>
+                            </clr-checkbox-wrapper>
+                            <clr-checkbox-wrapper>
+                                <input type="checkbox" clrCheckbox name="socialChatterRepeller" [(ngModel)]="socialChatterRepeller" (change)="updateMuteList()" />
+                                <label>{{'Social chatter (non-work posts)'|translate}} 💬</label>
                             </clr-checkbox-wrapper>
                         </div>
-                    </div>                    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle translate>Follow List</ng-template>
+        <div class="clr-row">
+            <div class="clr-col-12">
+                <div class="card">
+                    <h3 class="card-header" translate>What best describes you?</h3>
+                    <div class="card-block">
+                        <h4 class="card-title">{{'Select those that closely resemble your role'|translate}} 👇</h4>
+                        <clr-checkbox-container>
+                            <clr-checkbox-wrapper>
+                                <input type="checkbox" clrCheckbox name="rfpPoster" [(ngModel)]="rfpPoster" (change)="updateTopics()" />
+                                <label>{{'I post RFPs and hire vendors'|translate}} 📋</label>
+                            </clr-checkbox-wrapper>
+                            <clr-checkbox-wrapper>
+                                <input type="checkbox" clrCheckbox name="rfpResponder" [(ngModel)]="rfpResponder" (change)="updateTopics()" />
+                                <label>{{'I respond to RFPs and submit bids'|translate}} 📝</label>
+                            </clr-checkbox-wrapper>
+                            <clr-checkbox-wrapper>
+                                <input type="checkbox" clrCheckbox name="microContractSpecialist" [(ngModel)]="microContractSpecialist" (change)="updateTopics()" />
+                                <label>{{'I specialize in short-term or micro-contracts'|translate}} ⚡</label>
+                            </clr-checkbox-wrapper>
+                            <clr-checkbox-wrapper>
+                                <input type="checkbox" clrCheckbox name="enterpriseGovtSpecialist" [(ngModel)]="enterpriseGovtSpecialist" (change)="updateTopics()" />
+                                <label>{{'I focus on enterprise or government work'|translate}} 🏛️</label>
+                            </clr-checkbox-wrapper>
+                            <clr-checkbox-wrapper>
+                                <input type="checkbox" clrCheckbox name="scopeReviewer" [(ngModel)]="scopeReviewer" (change)="updateTopics()" />
+                                <label>{{'I like reviewing and improving RFP scopes'|translate}} 🔍</label>
+                            </clr-checkbox-wrapper>
+                            <clr-checkbox-wrapper>
+                                <input type="checkbox" clrCheckbox name="opportunityDiscoverer" [(ngModel)]="opportunityDiscoverer" (change)="updateTopics()"/>
+                                <label>{{'I discover opportunities early and signal demand'|translate}} 📡</label>
+                            </clr-checkbox-wrapper>
+                            <clr-checkbox-wrapper>
+                                <input type="checkbox" clrCheckbox name="participantSupporter" [(ngModel)]="participantSupporter" (change)="updateTopics()"/>
+                                <label>{{'I support and onboard new participants'|translate}} 🫂</label>
+                            </clr-checkbox-wrapper>
+                          </clr-checkbox-container>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </clr-wizard-page>
+
+    <clr-wizard-page>
+        <ng-template clrPageTitle translate>Advanced Preferences</ng-template>
+        <div class="clr-row">
+            <div class="clr-col-12">
+                <div class="card">
+                    <h3 class="card-header" translate>Optional Advanced Filter</h3>
+                    <div class="card-block">
+                        <h4 class="card-title" translate>Additional preferences for project matching</h4>
+                        <div class="card-text">
+                            <clr-checkbox-wrapper>
+                                <input type="checkbox" clrCheckbox name="escrowPreference" [(ngModel)]="escrowPreference" (change)="updateAdvancedFilters()" />
+                                <label>{{'I prefer projects with escrow / milestone payouts'|translate}} 🔒</label>
+                            </clr-checkbox-wrapper>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -145,36 +165,44 @@
         <div class="clr-row">
             <div class="clr-col-12">
                 <p translate>You are almost there!</p>
-                <p translate>Once you click <b>Finish</b>, I will auto-follow the suggested topics below and auto-mute the topics listed at the end.</p>
+                <p translate>Once you click <b>Finish</b>, I will set up your preferences based on your selections.</p>
                 <div *ngIf="!(ndkProvider.isNewToNostr || ndkProvider.isTryingZapddit)" class="alert alert-info" role="alert">
                     <div class="alert-items">
                         <div class="alert-item static">
                             <div class="alert-icon-wrapper">
                                 <cds-icon class="alert-icon" shape="exclamation-circle"></cds-icon>
                             </div>
-                            <span class="alert-text" translate>Don't worry! If you already have a zapddit setup, I won't mess it up. I won't unfollow or unmute any topic that you already followed or muted.</span>
+                            <span class="alert-text" translate>Don't worry! If you already have a setup, I won't mess it up. I won't change any preferences you already set.</span>
                         </div>
                     </div>
                 </div>
                 <div class="card">
-                    <h4 class="card-header" translate>Topics to Follow</h4>
+                    <h4 class="card-header" translate>Your Professional Interests</h4>
                     <div class="card-block">
                         <div class="card-text">
                             <span class="label label-info" *ngFor="let topic of suggestedTopics">#{{topic}}</span>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
 
                 <div class="card">
-                    <h4 class="card-header" translate>Topics to Mute</h4>
+                    <h4 class="card-header" translate>Content to Filter Out</h4>
                     <div class="card-block">
                         <div class="card-text">
                             <span class="label label-info" *ngFor="let topic of muteList">#{{topic}}</span>
                         </div>
-                    </div>                    
+                    </div>
+                </div>
+
+                <div class="card" *ngIf="advancedFilters.length > 0">
+                    <h4 class="card-header" translate>Advanced Preferences</h4>
+                    <div class="card-block">
+                        <div class="card-text">
+                            <span class="label label-info" *ngFor="let filter of advancedFilters">{{filter}}</span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </clr-wizard-page>
-
 </clr-wizard>

@@ -17,20 +17,29 @@ export class OnboardingWizardComponent {
 
   @Output()
   openChange:EventEmitter<boolean> = new EventEmitter<boolean>();
-  dailyDoseSeeker:boolean = false;
-  newsReader:boolean = false;
-  memeEnjoyer:boolean =false;
-  questionAnswerer: boolean = false;
-  btcMaxi:boolean = false;
-  foodLover:boolean = false;
-  plebLover:boolean = false;
-  clientsFan:boolean = false;
-  cryptoRepeller:boolean = false;
-  weirdStuffRepeller:boolean = false;
-  nonSporter:boolean = false;
-  twitterHater:boolean = false;
+
+  // Follow list properties (What best describes you?)
+  rfpPoster:boolean = false;
+  rfpResponder:boolean = false;
+  microContractSpecialist:boolean = false;
+  enterpriseGovtSpecialist:boolean = false;
+  scopeReviewer:boolean = false;
+  opportunityDiscoverer:boolean = false;
+  participantSupporter:boolean = false;
+
+  // Mute list properties (What do you want to avoid?)
+  lowBudgetRepeller:boolean = false;
+  vagueScopeRepeller:boolean = false;
+  cryptoSpeculativeRepeller:boolean = false;
+  sportsEntertainmentRepeller:boolean = false;
+  socialChatterRepeller:boolean = false;
+
+  // Advanced filters
+  escrowPreference:boolean = false;
+
   suggestedTopics: string[] = [];
   muteList: string[] = [];
+  advancedFilters: string[] = [];
   newUserDisplayName?:string;
   ndkProvider: NdkproviderService;
 
@@ -40,48 +49,56 @@ export class OnboardingWizardComponent {
 
   updateTopics(){
     let newTopics = []
-    if(this.dailyDoseSeeker){
-      newTopics.push('coffeechain','chaichain','nostr','nostrich','nostriches');
+    if(this.rfpPoster){
+      newTopics.push('rfp','rfpposter','procurement','hirer');
     }
-    if(this.newsReader){
-      newTopics.push('news','worldnews');
+    if(this.rfpResponder){
+      newTopics.push('rfp','rfpresponder','bid','proposal','vendor');
     }
-    if(this.questionAnswerer){
-      newTopics.push('asknostr');
+    if(this.microContractSpecialist){
+      newTopics.push('microcontract','shortterm','gig','freelance');
     }
-    if(this.memeEnjoyer){
-      newTopics.push('memechain','meme','memes')
+    if(this.enterpriseGovtSpecialist){
+      newTopics.push('enterprise','government','govcontract','corporation');
     }
-    if(this.btcMaxi){
-      newTopics.push('bitcoin','shitcoin')
+    if(this.scopeReviewer){
+      newTopics.push('scopereview','rfpquality','proposalreview');
     }
-    if(this.foodLover){
-      newTopics.push('foodstr','foodchain')
+    if(this.opportunityDiscoverer){
+      newTopics.push('opportunity','earlyaccess','marketresearch');
     }
-    if(this.plebLover){
-      newTopics.push('plebchain','zapathon')
-    }
-    if(this.clientsFan){
-      newTopics.push('amethyst','damus','iris','coracle','zapddit','client','nostrclient')
+    if(this.participantSupporter){
+      newTopics.push('onboarding','support','newparticipants','community');
     }
     this.suggestedTopics = newTopics
   }
 
   updateMuteList(){
     let mutedTopics = []
-    if(this.cryptoRepeller){
-      mutedTopics.push('bitcoin','shitcoin','crypto')
+    if(this.lowBudgetRepeller){
+      mutedTopics.push('lowbudget','unpaid','freelance')
     }
-    if(this.weirdStuffRepeller){
-      mutedTopics.push('footstr','feetstr','boobstr','nudestr')
+    if(this.vagueScopeRepeller){
+      mutedTopics.push('vaguescope','poorlydefined','unclear')
     }
-    if(this.nonSporter){
-      mutedTopics.push('baseball','sports','football','fifa','cricket','nfl','sport')
+    if(this.cryptoSpeculativeRepeller){
+      mutedTopics.push('crypto','speculative','cryptoonly','nft')
     }
-    if(this.twitterHater){
-      mutedTopics.push('twitter','birdapp','elon','elonmusk')
+    if(this.sportsEntertainmentRepeller){
+      mutedTopics.push('sports','entertainment','sponsorship')
+    }
+    if(this.socialChatterRepeller){
+      mutedTopics.push('social','chatter','offtopic','nonwork')
     }
     this.muteList = mutedTopics;
+  }
+
+  updateAdvancedFilters(){
+    let filters = []
+    if(this.escrowPreference){
+      filters.push('Escrow/Milestone Payments')
+    }
+    this.advancedFilters = filters;
   }
 
   async acceptChoices(){
@@ -116,6 +133,7 @@ export class OnboardingWizardComponent {
     }
     mutedTopicsToBePublished = [...alreadyMutedTopics,...this.muteList];
     mutedTopicsToBePublished = [...new Set(mutedTopicsToBePublished)];
+
     if(this.newUserDisplayName){
       //create new profile event and send it across
       await this.ndkProvider.createNewUserOnNostr(this.newUserDisplayName);
@@ -137,6 +155,4 @@ export class OnboardingWizardComponent {
     this.open = false;
     this.openChange.emit(this.open)
   }
-
-
 }
