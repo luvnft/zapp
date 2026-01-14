@@ -384,7 +384,7 @@ export class EventCardComponent implements OnInit, OnDestroy{
     if(this.event){
       this.event.id=this.hexEventId!;
     }
-    var url = "https://zapddit.com/n/"+ this.event?.id
+    var url = "https://rfp.auction/n/"+ this.event?.id
     if(navigator.share){
       navigator
       .share({
